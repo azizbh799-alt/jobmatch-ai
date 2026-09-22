@@ -1,0 +1,2806 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>JobMatch AI — Discover Your Next Opportunity</title>
+
+<style>
+:root{
+  --bg:#080808;
+  --bg-soft:#101010;
+  --panel:#151515;
+  --panel-2:#1b1b1b;
+  --border:rgba(255,255,255,.09);
+
+  --text:#f5f5f5;
+  --muted:#9a9a9a;
+
+  --accent:#e50914;
+  --accent-dark:#b20710;
+  --green:#20d47a;
+  --yellow:#f5c518;
+
+  --shadow:0 20px 60px rgba(0,0,0,.45);
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 75% 5%,rgba(229,9,20,.14),transparent 25%),
+    var(--bg);
+  color:var(--text);
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+  min-height:100vh;
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+
+  height:70px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  padding:0 5%;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0,0,0,.96),
+      rgba(0,0,0,.78)
+    );
+
+  backdrop-filter:blur(15px);
+
+  border-bottom:1px solid rgba(255,255,255,.05);
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:-1px;
+}
+
+.logo-mark{
+  width:34px;
+  height:34px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border-radius:8px;
+
+  background:var(--accent);
+
+  color:white;
+
+  font-weight:1000;
+  font-size:19px;
+
+  box-shadow:
+    0 8px 25px rgba(229,9,20,.3);
+}
+
+.logo span{
+  color:white;
+}
+
+.nav-links{
+  display:flex;
+  align-items:center;
+  gap:26px;
+
+  margin-left:30px;
+
+  flex:1;
+}
+
+.nav-links a{
+  color:#bcbcbc;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:600;
+
+  transition:.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:white;
+}
+
+.nav-right{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.online{
+  display:flex;
+  align-items:center;
+  gap:7px;
+
+  color:#aaa;
+  font-size:12px;
+}
+
+.online-dot{
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:var(--green);
+
+  box-shadow:0 0 12px rgba(32,212,122,.7);
+}
+
+.avatar{
+  width:38px;
+  height:38px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e50914,
+      #75030a
+    );
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-weight:900;
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+  min-height:600px;
+
+  position:relative;
+
+  display:flex;
+  align-items:center;
+
+  padding:80px 7%;
+
+  overflow:hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      #080808 0%,
+      rgba(8,8,8,.94) 28%,
+      rgba(8,8,8,.55) 58%,
+      rgba(8,8,8,.05) 100%
+    ),
+    radial-gradient(
+      circle at 78% 40%,
+      rgba(229,9,20,.38),
+      transparent 32%
+    );
+}
+
+.hero::after{
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      0deg,
+      var(--bg) 0%,
+      transparent 25%
+    );
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+
+  max-width:720px;
+}
+
+.hero-label{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+
+  padding:7px 13px;
+
+  border-radius:999px;
+
+  background:rgba(229,9,20,.12);
+
+  border:1px solid rgba(229,9,20,.28);
+
+  color:#ff6b71;
+
+  font-size:12px;
+  font-weight:800;
+
+  text-transform:uppercase;
+  letter-spacing:.8px;
+}
+
+.hero h1{
+  margin:20px 0 0;
+
+  font-size:
+    clamp(
+      48px,
+      7vw,
+      88px
+    );
+
+  line-height:.95;
+
+  letter-spacing:-4px;
+
+  font-weight:950;
+}
+
+.hero h1 span{
+  color:var(--accent);
+}
+
+.hero-description{
+  max-width:610px;
+
+  margin:25px 0 0;
+
+  color:#b8b8b8;
+
+  font-size:18px;
+
+  line-height:1.65;
+}
+
+.hero-actions{
+  display:flex;
+  gap:12px;
+
+  margin-top:32px;
+}
+
+.primary-btn,
+.secondary-btn{
+  border:0;
+
+  border-radius:6px;
+
+  padding:13px 23px;
+
+  cursor:pointer;
+
+  font-weight:800;
+
+  transition:
+    transform .2s,
+    background .2s;
+}
+
+.primary-btn{
+  background:white;
+  color:#080808;
+}
+
+.primary-btn:hover{
+  background:#e5e5e5;
+  transform:translateY(-2px);
+}
+
+.secondary-btn{
+  background:rgba(255,255,255,.12);
+  color:white;
+
+  border:1px solid rgba(255,255,255,.12);
+}
+
+.secondary-btn:hover{
+  background:rgba(255,255,255,.19);
+  transform:translateY(-2px);
+}
+
+.hero-stats{
+  display:flex;
+  gap:35px;
+
+  margin-top:45px;
+}
+
+.hero-stat strong{
+  display:block;
+
+  font-size:22px;
+}
+
+.hero-stat span{
+  color:#777;
+
+  font-size:12px;
+}
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.container{
+  width:min(1280px,92%);
+
+  margin:auto;
+
+  padding-bottom:80px;
+}
+
+.section{
+  margin-top:45px;
+}
+
+.section-heading{
+  display:flex;
+  justify-content:space-between;
+  align-items:end;
+
+  margin-bottom:17px;
+}
+
+.section-title{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.section-title h2{
+  margin:0;
+
+  font-size:24px;
+
+  letter-spacing:-.7px;
+}
+
+.section-title::before{
+  content:"";
+
+  width:4px;
+  height:25px;
+
+  background:var(--accent);
+
+  border-radius:5px;
+}
+
+.section-subtitle{
+  margin:5px 0 0;
+
+  color:#777;
+
+  font-size:13px;
+}
+
+/* =========================================================
+   WORKFLOW
+========================================================= */
+
+.workflow{
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:15px;
+}
+
+.workflow-card{
+  min-height:150px;
+
+  padding:22px;
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #151515,
+      #0d0d0d
+    );
+
+  border:1px solid var(--border);
+
+  transition:
+    transform .25s,
+    border-color .25s;
+}
+
+.workflow-card:hover{
+  transform:translateY(-5px);
+
+  border-color:
+    rgba(229,9,20,.4);
+}
+
+.workflow-number{
+  color:var(--accent);
+
+  font-size:12px;
+
+  font-weight:900;
+
+  letter-spacing:1px;
+}
+
+.workflow-card h3{
+  margin:15px 0 7px;
+
+  font-size:18px;
+}
+
+.workflow-card p{
+  margin:0;
+
+  color:#777;
+
+  font-size:13px;
+
+  line-height:1.55;
+}
+
+/* =========================================================
+   CV PANEL
+========================================================= */
+
+.cv-panel{
+  display:grid;
+
+  grid-template-columns:
+    1fr 1.4fr;
+
+  gap:20px;
+}
+
+.upload-card{
+  min-height:300px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  padding:30px;
+
+  border:1px dashed #3a3a3a;
+
+  border-radius:14px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(229,9,20,.10),
+      transparent 55%
+    );
+
+  transition:.25s;
+}
+
+.upload-card.dragging,
+.upload-card:hover{
+  border-color:var(--accent);
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(229,9,20,.16),
+      transparent 60%
+    );
+}
+
+.upload-icon{
+  width:65px;
+  height:65px;
+
+  border-radius:50%;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  background:#202020;
+
+  font-size:27px;
+
+  margin-bottom:15px;
+}
+
+.upload-card h3{
+  margin:0;
+
+  font-size:20px;
+}
+
+.upload-card p{
+  color:#777;
+
+  font-size:13px;
+}
+
+.file-input{
+  width:100%;
+
+  max-width:340px;
+
+  margin-top:10px;
+
+  padding:10px;
+
+  border-radius:8px;
+
+  color:#aaa;
+
+  background:#0a0a0a;
+
+  border:1px solid #292929;
+}
+
+/* =========================================================
+   PROFILE
+========================================================= */
+
+.profile{
+  min-height:300px;
+
+  padding:25px;
+
+  border-radius:14px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #171717,
+      #0e0e0e
+    );
+
+  border:1px solid var(--border);
+}
+
+.profile-empty{
+  height:100%;
+
+  min-height:250px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+
+  color:#666;
+}
+
+.profile-top{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:flex-start;
+
+  padding-bottom:20px;
+
+  border-bottom:1px solid var(--border);
+}
+
+.profile-name{
+  margin:0;
+
+  font-size:26px;
+
+  font-weight:850;
+}
+
+.profile-title{
+  margin-top:5px;
+
+  color:#e50914;
+
+  font-size:14px;
+
+  font-weight:700;
+}
+
+.badge{
+  display:inline-flex;
+
+  padding:7px 10px;
+
+  border-radius:999px;
+
+  background:
+    rgba(32,212,122,.1);
+
+  border:1px solid
+    rgba(32,212,122,.25);
+
+  color:var(--green);
+
+  font-size:11px;
+
+  font-weight:800;
+}
+
+.profile-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:10px;
+
+  margin-top:18px;
+}
+
+.profile-item{
+  padding:13px;
+
+  border-radius:9px;
+
+  background:#101010;
+
+  border:1px solid #202020;
+}
+
+.profile-label{
+  color:#666;
+
+  font-size:10px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.8px;
+}
+
+.profile-value{
+  margin-top:5px;
+
+  color:#ddd;
+
+  font-size:13px;
+
+  font-weight:600;
+}
+
+.tags{
+  margin-top:17px;
+}
+
+.tag{
+  display:inline-block;
+
+  margin:4px 4px 0 0;
+
+  padding:6px 9px;
+
+  border-radius:5px;
+
+  background:#202020;
+
+  color:#bbb;
+
+  font-size:11px;
+
+  border:1px solid #2a2a2a;
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-panel{
+  padding:22px;
+
+  border-radius:14px;
+
+  background:#111;
+
+  border:1px solid var(--border);
+}
+
+.search-grid{
+  display:grid;
+
+  grid-template-columns:
+    1.5fr 1fr .5fr;
+
+  gap:15px;
+
+  align-items:end;
+}
+
+.field label{
+  display:block;
+
+  margin-bottom:7px;
+
+  color:#aaa;
+
+  font-size:12px;
+
+  font-weight:700;
+}
+
+.field select,
+.field input{
+  width:100%;
+
+  padding:12px;
+
+  color:white;
+
+  background:#080808;
+
+  border:1px solid #303030;
+
+  border-radius:7px;
+
+  outline:none;
+}
+
+.field select:focus,
+.field input:focus{
+  border-color:var(--accent);
+}
+
+.field select[multiple]{
+  min-height:120px;
+}
+
+.checkbox{
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  color:#aaa;
+
+  font-size:12px;
+
+  margin-bottom:12px;
+}
+
+.checkbox input{
+  accent-color:var(--accent);
+}
+
+.search-button{
+  width:100%;
+
+  padding:12px;
+
+  border:0;
+
+  border-radius:7px;
+
+  background:var(--accent);
+
+  color:white;
+
+  cursor:pointer;
+
+  font-weight:850;
+
+  transition:.2s;
+}
+
+.search-button:hover{
+  background:var(--accent-dark);
+
+  transform:translateY(-1px);
+}
+
+/* =========================================================
+   RESULTS ROW
+========================================================= */
+
+.results-row{
+  display:flex;
+
+  gap:14px;
+
+  overflow-x:auto;
+
+  padding:8px 2px 20px;
+
+  scroll-snap-type:x mandatory;
+}
+
+.results-row::-webkit-scrollbar{
+  height:5px;
+}
+
+.results-row::-webkit-scrollbar-track{
+  background:#151515;
+}
+
+.results-row::-webkit-scrollbar-thumb{
+  background:#3a3a3a;
+
+  border-radius:20px;
+}
+
+/* =========================================================
+   JOB CARD
+========================================================= */
+
+.job-card{
+  position:relative;
+
+  flex:0 0 340px;
+
+  min-height:400px;
+
+  overflow:hidden;
+
+  scroll-snap-align:start;
+
+  border-radius:10px;
+
+  background:
+    linear-gradient(
+      160deg,
+      #202020,
+      #0d0d0d 75%
+    );
+
+  border:1px solid rgba(255,255,255,.06);
+
+  transition:
+    transform .25s,
+    box-shadow .25s,
+    border-color .25s;
+}
+
+.job-card:hover{
+  transform:
+    translateY(-8px)
+    scale(1.015);
+
+  border-color:
+    rgba(229,9,20,.4);
+
+  box-shadow:
+    0 25px 55px rgba(0,0,0,.55);
+}
+
+.job-card::before{
+  content:"";
+
+  position:absolute;
+
+  left:0;
+  right:0;
+  top:0;
+
+  height:150px;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(229,9,20,.28),
+      transparent 65%
+    );
+
+  opacity:.8;
+}
+
+.job-content{
+  position:relative;
+
+  z-index:2;
+
+  padding:22px;
+
+  height:100%;
+
+  display:flex;
+  flex-direction:column;
+}
+
+.job-company{
+  color:#999;
+
+  font-size:12px;
+
+  font-weight:700;
+
+  text-transform:uppercase;
+
+  letter-spacing:.5px;
+}
+
+.job-title{
+  margin:10px 0 5px;
+
+  font-size:21px;
+
+  line-height:1.15;
+
+  font-weight:850;
+}
+
+.job-location{
+  color:#888;
+
+  font-size:12px;
+}
+
+.score{
+  display:flex;
+
+  align-items:center;
+
+  gap:8px;
+
+  margin-top:18px;
+}
+
+.score-number{
+  color:var(--green);
+
+  font-size:27px;
+
+  font-weight:950;
+}
+
+.score-text{
+  color:#777;
+
+  font-size:10px;
+
+  text-transform:uppercase;
+}
+
+.score-bar{
+  height:4px;
+
+  margin-top:8px;
+
+  background:#292929;
+
+  border-radius:10px;
+
+  overflow:hidden;
+}
+
+.score-fill{
+  height:100%;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--green),
+      #61e8a6
+    );
+
+  border-radius:10px;
+}
+
+.job-description{
+  margin-top:17px;
+
+  color:#888;
+
+  font-size:12px;
+
+  line-height:1.55;
+
+  display:-webkit-box;
+
+  -webkit-line-clamp:4;
+
+  -webkit-box-orient:vertical;
+
+  overflow:hidden;
+}
+
+.job-skills{
+  margin-top:16px;
+}
+
+.job-skills-title{
+  color:#666;
+
+  font-size:9px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.8px;
+}
+
+.job-footer{
+  display:flex;
+
+  justify-content:space-between;
+
+  align-items:center;
+
+  margin-top:auto;
+
+  padding-top:20px;
+}
+
+.view-job{
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:7px;
+
+  padding:9px 14px;
+
+  border-radius:5px;
+
+  background:white;
+
+  color:#080808;
+
+  text-decoration:none;
+
+  font-size:12px;
+
+  font-weight:850;
+
+  transition:.2s;
+}
+
+.view-job:hover{
+  background:#ddd;
+}
+
+.missing{
+  color:#ff6b71;
+
+  font-size:10px;
+
+  margin-top:9px;
+}
+
+/* =========================================================
+   EMPTY / LOADING / ERROR
+========================================================= */
+
+.empty{
+  min-height:260px;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  color:#666;
+}
+
+.empty-icon{
+  font-size:40px;
+
+  margin-bottom:10px;
+
+  color:#444;
+}
+
+.loading{
+  min-height:230px;
+
+  display:flex;
+  flex-direction:column;
+
+  justify-content:center;
+  align-items:center;
+
+  gap:13px;
+
+  color:#777;
+}
+
+.spinner{
+  width:30px;
+  height:30px;
+
+  border-radius:50%;
+
+  border:3px solid #292929;
+
+  border-top-color:var(--accent);
+
+  animation:
+    spin .8s linear infinite;
+}
+
+@keyframes spin{
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+.error{
+  padding:15px;
+
+  border-radius:8px;
+
+  background:
+    rgba(229,9,20,.09);
+
+  border:1px solid
+    rgba(229,9,20,.3);
+
+  color:#ff777d;
+
+  font-size:13px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer{
+  margin-top:70px;
+
+  padding:30px 0;
+
+  border-top:1px solid var(--border);
+
+  color:#555;
+
+  text-align:center;
+
+  font-size:11px;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero{
+    min-height:530px;
+
+    padding:
+      70px 6%;
+  }
+
+  .hero h1{
+    font-size:55px;
+
+    letter-spacing:-3px;
+  }
+
+  .cv-panel{
+    grid-template-columns:1fr;
+  }
+
+  .search-grid{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:600px){
+
+  .navbar{
+    padding:0 18px;
+  }
+
+  .online{
+    display:none;
+  }
+
+  .hero{
+    min-height:500px;
+  }
+
+  .hero h1{
+    font-size:45px;
+  }
+
+  .hero-description{
+    font-size:15px;
+  }
+
+  .hero-actions{
+    flex-direction:column;
+  }
+
+  .hero-actions button{
+    width:100%;
+  }
+
+  .hero-stats{
+    gap:20px;
+  }
+
+  .workflow{
+    grid-template-columns:1fr;
+  }
+
+  .profile-grid{
+    grid-template-columns:1fr;
+  }
+
+  .job-card{
+    flex-basis:290px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
+
+<nav class="navbar">
+
+  <div class="logo">
+
+    <div class="logo-mark">
+      J
+    </div>
+
+    <span>
+      JobMatch
+    </span>
+
+  </div>
+
+
+  <div class="nav-links">
+
+    <a
+      href="#discover"
+      class="active"
+    >
+      Discover
+    </a>
+
+    <a href="#profile-section">
+      My Profile
+    </a>
+
+    <a href="#matches">
+      My Matches
+    </a>
+
+  </div>
+
+
+  <div class="nav-right">
+
+    <div class="online">
+
+      <span class="online-dot"></span>
+
+      AI Online
+
+    </div>
+
+    <div class="avatar">
+      J
+    </div>
+
+  </div>
+
+</nav>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="hero-label">
+      ✦ AI-powered career platform
+    </div>
+
+
+    <h1>
+
+      Your next
+      <span>career.</span>
+      Matched.
+
+    </h1>
+
+
+    <p class="hero-description">
+
+      JobMatch AI analyzes your professional profile,
+      understands your skills and discovers opportunities
+      that match your career goals.
+
+    </p>
+
+
+    <div class="hero-actions">
+
+      <button
+        class="primary-btn"
+        onclick="scrollToUpload()"
+      >
+        ▶ Start Matching
+      </button>
+
+      <button
+        class="secondary-btn"
+        onclick="scrollToMatches()"
+      >
+        Explore Opportunities
+      </button>
+
+    </div>
+
+
+    <div class="hero-stats">
+
+      <div class="hero-stat">
+
+        <strong>AI</strong>
+
+        <span>
+          Profile Analysis
+        </span>
+
+      </div>
+
+
+      <div class="hero-stat">
+
+        <strong>30+</strong>
+
+        <span>
+          Opportunities
+        </span>
+
+      </div>
+
+
+      <div class="hero-stat">
+
+        <strong>24/7</strong>
+
+        <span>
+          Job Discovery
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<main class="container">
+
+
+<!-- =========================================================
+     WORKFLOW
+========================================================= -->
+
+<section class="section">
+
+  <div class="section-heading">
+
+    <div>
+
+      <div class="section-title">
+
+        <h2>
+          How it works
+        </h2>
+
+      </div>
+
+      <p class="section-subtitle">
+        From CV to your next opportunity.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="workflow">
+
+    <div class="workflow-card">
+
+      <div class="workflow-number">
+        STEP 01
+      </div>
+
+      <h3>
+        Analyze
+      </h3>
+
+      <p>
+        Upload your CV and let the AI identify
+        your skills, experience, education and
+        professional profile.
+      </p>
+
+    </div>
+
+
+    <div class="workflow-card">
+
+      <div class="workflow-number">
+        STEP 02
+      </div>
+
+      <h3>
+        Discover
+      </h3>
+
+      <p>
+        Select your preferred markets and search
+        thousands of relevant opportunities.
+      </p>
+
+    </div>
+
+
+    <div class="workflow-card">
+
+      <div class="workflow-number">
+        STEP 03
+      </div>
+
+      <h3>
+        Match
+      </h3>
+
+      <p>
+        Receive compatibility scores and AI-powered
+        explanations for every opportunity.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CV + PROFILE
+========================================================= -->
+
+<section
+  class="section"
+  id="profile-section"
+>
+
+  <div class="section-heading">
+
+    <div>
+
+      <div class="section-title">
+
+        <h2>
+          Your professional profile
+        </h2>
+
+      </div>
+
+      <p class="section-subtitle">
+        Build your AI-powered career profile.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="cv-panel">
+
+
+    <!-- UPLOAD -->
+
+    <div
+      class="upload-card"
+      id="uploadCard"
+    >
+
+      <div class="upload-icon">
+        ↑
+      </div>
+
+      <h3>
+        Upload your CV
+      </h3>
+
+      <p>
+        PDF format · Maximum 8 MB
+      </p>
+
+
+      <input
+        id="cv"
+        class="file-input"
+        type="file"
+        accept=".pdf,application/pdf"
+      >
+
+
+      <button
+        class="primary-btn"
+        onclick="uploadCV()"
+      >
+        Analyze CV
+      </button>
+
+    </div>
+
+
+    <!-- PROFILE -->
+
+    <div
+      class="profile"
+      id="profile"
+    >
+
+      <div class="profile-empty">
+
+        <div>
+
+          <div style="font-size:35px">
+            ◉
+          </div>
+
+          <div>
+            Your profile will appear here
+          </div>
+
+          <div
+            style="
+              font-size:11px;
+              margin-top:6px;
+              color:#444;
+            "
+          >
+            Upload a CV to begin
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     SEARCH
+========================================================= -->
+
+<section
+  class="section"
+  id="discover"
+>
+
+  <div class="section-heading">
+
+    <div>
+
+      <div class="section-title">
+
+        <h2>
+          Discover opportunities
+        </h2>
+
+      </div>
+
+      <p class="section-subtitle">
+        Choose where you want to build your career.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="search-panel">
+
+    <div class="search-grid">
+
+
+      <div class="field">
+
+        <label>
+          TARGET MARKETS
+        </label>
+
+        <select
+          id="countries"
+          multiple
+          size="5"
+        >
+
+          <option value="France">
+            🇫🇷 France
+          </option>
+
+          <option value="Switzerland">
+            🇨🇭 Switzerland
+          </option>
+
+          <option value="Germany">
+            🇩🇪 Germany
+          </option>
+
+          <option value="Canada">
+            🇨🇦 Canada
+          </option>
+
+          <option value="UAE">
+            🇦🇪 UAE
+          </option>
+
+          <option value="Remote">
+            🌍 Remote
+          </option>
+
+          <option value="Tunisia">
+            🇹🇳 Tunisia
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          PREFERENCES
+        </label>
+
+        <label class="checkbox">
+
+          <input
+            id="remote"
+            type="checkbox"
+          >
+
+          Remote opportunities only
+
+        </label>
+
+
+        <label>
+          MAXIMUM RESULTS
+        </label>
+
+        <input
+          id="limit"
+          type="number"
+          min="1"
+          max="30"
+          value="10"
+        >
+
+      </div>
+
+
+      <div>
+
+        <button
+          class="search-button"
+          onclick="searchJobs()"
+        >
+          Find Matches →
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     RESULTS
+========================================================= -->
+
+<section
+  class="section"
+  id="matches"
+>
+
+  <div class="section-heading">
+
+    <div>
+
+      <div class="section-title">
+
+        <h2>
+          Recommended for you
+        </h2>
+
+      </div>
+
+      <p class="section-subtitle">
+        Opportunities ranked by compatibility.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div id="results">
+
+    <div class="empty">
+
+      <div class="empty-icon">
+        ✦
+      </div>
+
+      <div>
+        Upload your CV to discover personalized opportunities.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  JobMatch AI / MatchTN
+  ·
+  Intelligent Career Matching Platform
+  ·
+  AI + Full Stack
+
+</footer>
+
+</main>
+
+
+<script>
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let candidateId = null;
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function scrollToUpload(){
+
+  document
+    .getElementById("profile-section")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function scrollToMatches(){
+
+  document
+    .getElementById("matches")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================================
+   API
+========================================================= */
+
+function headers(){
+
+  return {};
+
+}
+
+
+async function api(
+  url,
+  options={}
+){
+
+  options.headers = {
+
+    ...(options.headers || {}),
+
+    ...headers()
+
+  };
+
+
+  const response = await fetch(
+    url,
+    options
+  );
+
+
+  const text =
+    await response.text();
+
+
+  let data;
+
+
+  try{
+
+    data =
+      JSON.parse(text);
+
+  }catch{
+
+    throw new Error(
+      text ||
+      `HTTP ${response.status}`
+    );
+
+  }
+
+
+  if(!response.ok){
+
+    throw new Error(
+      data.detail ||
+      `HTTP ${response.status}`
+    );
+
+  }
+
+
+  return data;
+
+}
+
+
+/* =========================================================
+   UPLOAD CV
+========================================================= */
+
+async function uploadCV(){
+
+  const fileInput =
+    document.getElementById("cv");
+
+
+  const file =
+    fileInput.files[0];
+
+
+  if(!file){
+
+    alert(
+      "Choose a PDF CV first."
+    );
+
+    return;
+
+  }
+
+
+  if(
+    file.type !==
+    "application/pdf"
+  ){
+
+    alert(
+      "Please select a PDF file."
+    );
+
+    return;
+
+  }
+
+
+  const maxSize =
+    8 * 1024 * 1024;
+
+
+  if(
+    file.size >
+    maxSize
+  ){
+
+    alert(
+      "The PDF must be smaller than 8 MB."
+    );
+
+    return;
+
+  }
+
+
+  const formData =
+    new FormData();
+
+
+  formData.append(
+    "file",
+    file
+  );
+
+
+  const profile =
+    document.getElementById(
+      "profile"
+    );
+
+
+  profile.innerHTML = `
+
+    <div class="loading">
+
+      <div class="spinner"></div>
+
+      <div>
+        AI is analyzing your CV...
+      </div>
+
+    </div>
+
+  `;
+
+
+  try{
+
+    const data =
+      await api(
+        "/api/v1/candidates/upload-cv",
+        {
+          method:"POST",
+          body:formData
+        }
+      );
+
+
+    candidateId =
+      data.id;
+
+
+    const skills =
+      (data.skills || [])
+      .map(
+        skill => `
+
+          <span class="tag">
+            ${escapeHtml(skill)}
+          </span>
+
+        `
+      )
+      .join("");
+
+
+    profile.innerHTML = `
+
+      <div class="profile-top">
+
+        <div>
+
+          <h3 class="profile-name">
+
+            ${escapeHtml(
+              data.name ||
+              "Candidate"
+            )}
+
+          </h3>
+
+          <div class="profile-title">
+
+            ${escapeHtml(
+              data.title ||
+              "Professional Candidate"
+            )}
+
+          </div>
+
+        </div>
+
+
+        <div class="badge">
+
+          ✓ PROFILE READY
+
+        </div>
+
+      </div>
+
+
+      <div class="profile-grid">
+
+
+        <div class="profile-item">
+
+          <div class="profile-label">
+            Experience
+          </div>
+
+          <div class="profile-value">
+
+            ${escapeHtml(
+              data.experience_years || 0
+            )}
+
+            years
+
+          </div>
+
+        </div>
+
+
+        <div class="profile-item">
+
+          <div class="profile-label">
+            Location
+          </div>
+
+          <div class="profile-value">
+
+            ${escapeHtml(
+              data.location ||
+              "Not detected"
+            )}
+
+          </div>
+
+        </div>
+
+
+        <div class="profile-item">
+
+          <div class="profile-label">
+            Education
+          </div>
+
+          <div class="profile-value">
+
+            ${escapeHtml(
+              data.education ||
+              "Not detected"
+            )}
+
+          </div>
+
+        </div>
+
+
+        <div class="profile-item">
+
+          <div class="profile-label">
+            Languages
+          </div>
+
+          <div class="profile-value">
+
+            ${escapeHtml(
+              (data.languages || [])
+              .join(", ")
+              ||
+              "Not detected"
+            )}
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+      <div class="tags">
+
+        <div class="profile-label">
+          DETECTED SKILLS
+        </div>
+
+        <div style="margin-top:5px">
+
+          ${
+            skills ||
+            '<span style="color:#666;font-size:12px">No skills detected.</span>'
+          }
+
+        </div>
+
+      </div>
+
+
+      <div
+        class="profile-item"
+        style="margin-top:17px"
+      >
+
+        <div class="profile-label">
+          Preferred markets
+        </div>
+
+        <div class="profile-value">
+
+          ${escapeHtml(
+            (data.preferred_countries || [])
+            .join(", ")
+            ||
+            "Not detected"
+          )}
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    document.getElementById(
+      "results"
+    ).innerHTML = `
+
+      <div class="empty">
+
+        <div class="empty-icon">
+          ✓
+        </div>
+
+        <div>
+          Profile ready.
+        </div>
+
+        <div
+          style="
+            margin-top:7px;
+            font-size:12px;
+          "
+        >
+          Select your target markets above.
+        </div>
+
+      </div>
+
+    `;
+
+
+  }catch(error){
+
+    candidateId =
+      null;
+
+
+    profile.innerHTML = `
+
+      <div class="error">
+
+        ${escapeHtml(
+          error.message
+        )}
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =========================================================
+   SEARCH JOBS
+========================================================= */
+
+async function searchJobs(){
+
+  if(!candidateId){
+
+    alert(
+      "Upload a CV first."
+    );
+
+    return;
+
+  }
+
+
+  const countrySelect =
+    document.getElementById(
+      "countries"
+    );
+
+
+  const countries =
+    [...countrySelect.selectedOptions]
+    .map(
+      option =>
+        option.value
+    );
+
+
+  if(
+    countries.length === 0
+  ){
+
+    alert(
+      "Select at least one country."
+    );
+
+    return;
+
+  }
+
+
+  const limit =
+    Number(
+      document.getElementById(
+        "limit"
+      ).value
+    );
+
+
+  const payload = {
+
+    candidate_id:
+      candidateId,
+
+    countries:
+      countries,
+
+    remote_only:
+      document.getElementById(
+        "remote"
+      ).checked,
+
+    limit:
+      limit
+
+  };
+
+
+  const output =
+    document.getElementById(
+      "results"
+    );
+
+
+  output.innerHTML = `
+
+    <div class="loading">
+
+      <div class="spinner"></div>
+
+      <div>
+        Searching and ranking opportunities...
+      </div>
+
+    </div>
+
+  `;
+
+
+  try{
+
+    const matches =
+      await api(
+        "/api/v1/search",
+        {
+          method:"POST",
+
+          headers:{
+            "Content-Type":
+              "application/json"
+          },
+
+          body:
+            JSON.stringify(
+              payload
+            )
+        }
+      );
+
+
+    if(
+      !matches.length
+    ){
+
+      output.innerHTML = `
+
+        <div class="empty">
+
+          <div class="empty-icon">
+            ◌
+          </div>
+
+          <div>
+            No opportunities found.
+          </div>
+
+          <div
+            style="
+              margin-top:7px;
+              font-size:12px;
+            "
+          >
+            Try another country or search preference.
+          </div>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+
+    const jobs =
+      await Promise.all(
+
+        matches.map(
+          match =>
+            api(
+              `/api/v1/jobs/${match.job_id}`
+            )
+        )
+
+      );
+
+
+    output.innerHTML = `
+
+      <div class="results-row">
+
+        ${
+          matches
+          .map(
+            (match,index) => {
+
+              const job =
+                jobs[index];
+
+
+              const score =
+                Number(
+                  match.score || 0
+                );
+
+
+              const skills =
+                (job.skills || [])
+                .slice(0,6)
+                .map(
+                  skill => `
+
+                    <span class="tag">
+                      ${escapeHtml(skill)}
+                    </span>
+
+                  `
+                )
+                .join("");
+
+
+              const missing =
+                (match.missing_skills || [])
+                .join(", ");
+
+
+              return `
+
+                <article
+                  class="job-card"
+                >
+
+                  <div class="job-content">
+
+
+                    <div>
+
+                      <div class="job-company">
+
+                        ${escapeHtml(
+                          job.company ||
+                          "Company"
+                        )}
+
+                      </div>
+
+
+                      <div class="job-title">
+
+                        ${escapeHtml(
+                          job.title ||
+                          "Opportunity"
+                        )}
+
+                      </div>
+
+
+                      <div class="job-location">
+
+                        📍
+
+                        ${escapeHtml(
+                          job.location ||
+                          "Location not specified"
+                        )}
+
+                        ${
+                          job.country
+                          ? ` · ${escapeHtml(job.country)}`
+                          : ""
+                        }
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="score">
+
+                      <div class="score-number">
+
+                        ${score.toFixed(0)}%
+
+                      </div>
+
+                      <div>
+
+                        <div class="score-text">
+                          AI Match
+                        </div>
+
+                      </div>
+
+                    </div>
+
+
+                    <div class="score-bar">
+
+                      <div
+                        class="score-fill"
+                        style="
+                          width:${Math.min(
+                            Math.max(score,0),
+                            100
+                          )}%
+                        "
+                      ></div>
+
+                    </div>
+
+
+                    <div class="job-description">
+
+                      ${escapeHtml(
+                        job.description ||
+                        ""
+                      )}
+
+                    </div>
+
+
+                    <div class="job-skills">
+
+                      <div class="job-skills-title">
+                        Required skills
+                      </div>
+
+                      <div>
+
+                        ${
+                          skills ||
+                          '<span style="color:#555;font-size:11px">Not specified</span>'
+                        }
+
+                      </div>
+
+
+                      ${
+                        missing
+                        ? `
+
+                          <div class="missing">
+
+                            Missing:
+                            ${escapeHtml(
+                              missing
+                            )}
+
+                          </div>
+
+                        `
+                        : ""
+                      }
+
+                    </div>
+
+
+                    <div class="job-footer">
+
+
+                      <div
+                        style="
+                          color:#666;
+                          font-size:10px;
+                        "
+                      >
+
+                        ${
+                          job.remote
+                          ? "🌍 Remote"
+                          : "● On-site / Hybrid"
+                        }
+
+                      </div>
+
+
+                      ${
+                        job.url
+                        ? `
+
+                          <a
+                            class="view-job"
+                            href="${escapeAttr(
+                              job.url
+                            )}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            View opportunity →
+                          </a>
+
+                        `
+                        : ""
+                      }
+
+                    </div>
+
+
+                    ${
+                      match.explanation
+                      ? `
+
+                        <div
+                          style="
+                            margin-top:12px;
+                            padding-top:12px;
+                            border-top:1px solid #222;
+                            color:#777;
+                            font-size:10px;
+                            line-height:1.5;
+                          "
+                        >
+
+                          <strong
+                            style="color:#aaa"
+                          >
+                            AI Analysis:
+                          </strong>
+
+                          ${escapeHtml(
+                            match.explanation
+                          )}
+
+                        </div>
+
+                      `
+                      : ""
+                    }
+
+
+                  </div>
+
+                </article>
+
+              `;
+
+            }
+          )
+          .join("")
+        }
+
+      </div>
+
+    `;
+
+
+  }catch(error){
+
+    output.innerHTML = `
+
+      <div class="error">
+
+        ${escapeHtml(
+          error.message
+        )}
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =========================================================
+   DRAG & DROP
+========================================================= */
+
+const uploadCard =
+  document.getElementById(
+    "uploadCard"
+  );
+
+
+uploadCard.addEventListener(
+  "dragover",
+  event => {
+
+    event.preventDefault();
+
+    uploadCard.classList.add(
+      "dragging"
+    );
+
+  }
+);
+
+
+uploadCard.addEventListener(
+  "dragleave",
+  () => {
+
+    uploadCard.classList.remove(
+      "dragging"
+    );
+
+  }
+);
+
+
+uploadCard.addEventListener(
+  "drop",
+  event => {
+
+    event.preventDefault();
+
+    uploadCard.classList.remove(
+      "dragging"
+    );
+
+
+    const files =
+      event.dataTransfer.files;
+
+
+    if(files.length){
+
+      const input =
+        document.getElementById(
+          "cv"
+        );
+
+      input.files =
+        files;
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   SECURITY
+========================================================= */
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /[&<>"']/g,
+    character => ({
+
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#039;"
+
+    }[character])
+  );
+
+}
+
+
+function escapeAttr(value){
+
+  return escapeHtml(value);
+
+}
+
+</script>
+
+</body>
+</html>
